@@ -1,0 +1,21 @@
+.pagination {
+    display: flex;
+    margin-top: 4rem;
+
+    .item {
+        padding: 1rem 1.5rem;
+        background-color: #F0A5C3;
+        color: white;
+        font-weight: 700;
+        border-radius: 0.2rem;
+        margin: 0.5rem;
+
+        &.item:first-child {
+            margin-right: 1.5rem;
+        }
+
+        &.item:last-child {
+            margin-left: 1.5rem;
+        }
+    }
+}
