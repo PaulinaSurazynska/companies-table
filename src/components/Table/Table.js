@@ -1,20 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import getData from 'utils/getData';
+import React from 'react';
 import style from './Table.module.scss';
 import TableData from './TableData/TableData';
 
-const Table = () => {
-  const [companies, setCompanies] = useState([]);
-  const [error, setError] = useState(false);
-
-  useEffect(() => {
-    getData('https://recruitment.hal.skygate.io/companies', setCompanies, setError);
-  }, []);
-
+const Table = ({ companies }) => {
   return (
     <>
-      {error && <p>There was a problem with loading the list, try later</p>}
-      {companies.length ? (
+      {!companies.length ? (
+        <p>Loading list of the companies...</p>
+      ) : (
         <table className={style.table}>
           <thead>
             <tr>
@@ -32,8 +25,6 @@ const Table = () => {
             ))}
           </tbody>
         </table>
-      ) : (
-        <p>Loading list of the companies...</p>
       )}
     </>
   );
