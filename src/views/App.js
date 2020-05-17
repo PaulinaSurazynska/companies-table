@@ -26,7 +26,7 @@ function App() {
     <div className={style.page}>
       <div className={style.content}>
         <h1 className={style.title}>Companies table</h1>
-        <SearchBar />
+        <SearchBar companies={companies} />
         {error ? (
           <p>There was a problem with loading the data, please try again later</p>
         ) : (

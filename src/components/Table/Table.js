@@ -11,7 +11,7 @@ const Table = ({ companies }) => {
         <table className={style.table}>
           <thead>
             <tr>
-              <th>id</th>
+              <th>Id</th>
               <th>Name</th>
               <th>City</th>
               <th>Total income</th>
