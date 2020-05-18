@@ -22,11 +22,24 @@ function App() {
 
   const changePage = (pageNumber) => setCurrentPage(pageNumber);
 
+  const searchCompany = (e) => {
+    const search = companies.filter((company) => {
+      return Object.values(company)
+        .map((value) => {
+          return String(value);
+        })
+        .find((value) => value.toUpperCase().includes(e.target.value.toUpperCase()));
+    });
+
+    // upadate table
+    setCompanies(search);
+  };
+
   return (
     <div className={style.page}>
       <div className={style.content}>
         <h1 className={style.title}>Companies table</h1>
-        <SearchBar companies={companies} />
+        <SearchBar searchCompany={searchCompany} />
         {error ? (
           <p>There was a problem with loading the data, please try again later</p>
         ) : (

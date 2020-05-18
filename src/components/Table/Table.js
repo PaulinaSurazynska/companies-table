@@ -1,17 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import style from './Table.module.scss';
 import TableData from './TableData/TableData';
 
 const Table = ({ companies }) => {
+  const [data, setData] = useState(companies);
+  const [order, setOrder] = useState(false);
+  const sortBy = (key) => {
+    setOrder(!order);
+    const copyData = [...data];
+    setData(copyData.sort((a, b) => (order ? a[key] - b[key] : b[key] - a[key])));
+  };
+  useEffect(() => {
+    setData(companies);
+  }, [companies]);
   return (
     <>
-      {!companies.length ? (
+      {!data.length ? (
         <p>Loading list of the companies...</p>
       ) : (
         <table className={style.table}>
           <thead>
             <tr>
-              <th>Id</th>
+              <th onClick={() => sortBy('id')}>Id</th>
               <th>Name</th>
               <th>City</th>
               <th>Total income</th>
@@ -20,7 +30,7 @@ const Table = ({ companies }) => {
             </tr>
           </thead>
           <tbody>
-            {companies.map(({ id, name, city }) => (
+            {data.map(({ id, name, city }) => (
               <TableData key={id} id={id} name={name} city={city} />
             ))}
           </tbody>
