@@ -1,6 +1,7 @@
+/* eslint-disable import/prefer-default-export */
 import axios from 'axios';
 
-const getData = async (api, setData, setError = null) => {
+const getCompanies = async (api, setData, setError = null) => {
   try {
     setError(false);
     const { data } = await axios.get(api);
@@ -10,4 +11,4 @@ const getData = async (api, setData, setError = null) => {
   }
 };
 
-export default getData;
+export { getCompanies };

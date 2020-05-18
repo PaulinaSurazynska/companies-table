@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import getData from 'utils/getData';
+import { getCompanies } from 'utils/getData';
 import Pagination from 'components/Pagination/Pagination';
 import Table from 'components/Table/Table';
 import SearchBar from 'components/SearchBar/SearachBar';
@@ -12,7 +12,7 @@ function App() {
   const [itemsPerPage] = useState(20);
 
   useEffect(() => {
-    getData('https://recruitment.hal.skygate.io/companies', setCompanies, setError);
+    getCompanies('https://recruitment.hal.skygate.io/companies', setCompanies, setError);
   }, []);
 
   // pagination logic

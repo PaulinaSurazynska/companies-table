@@ -1,5 +1,7 @@
 .table {
   border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
 
   th {
     padding: 1rem;
@@ -9,5 +11,27 @@
   td {
     padding: 1rem;
     text-align: center;
+  }
+}
+
+@media(max-width:870px) {
+  thead {
+    display: none;
+  }
+
+  tbody,
+  tr,
+  td {
+    display: block;
+    width: 100%;
+  }
+
+  tr {
+    margin-bottom: 0.2rem;
+  }
+
+  td {
+    text-align: right;
+    padding-left: 50%;
   }
 }
