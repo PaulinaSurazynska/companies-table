@@ -4,12 +4,13 @@ import TableData from './TableData/TableData';
 
 const Table = ({ companies }) => {
   const [data, setData] = useState(companies);
+  // create a state to toggle between sort order
   const [order, setOrder] = useState(false);
 
   const sortBy = (key) => {
     setOrder(!order);
-    const copyData = [...data];
-    setData(copyData.sort((a, b) => (order ? a[key] - b[key] : b[key] - a[key])));
+    const sorted = [...data].sort((a, b) => (order ? a[key] - b[key] : b[key] - a[key]));
+    setData(sorted);
   };
 
   useEffect(() => {

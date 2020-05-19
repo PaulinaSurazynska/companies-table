@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import PropTypes from 'prop-types';
 import { getTotalIncome, getAvagareIncome, getLastMonthIncome } from 'utils/TableMethods';
 import { incomesUrl } from 'utils/apiURL';
-import PropTypes from 'prop-types';
-import axios from 'axios';
 import style from './TableData.module.scss';
 
 const TableData = ({ id, name, city }) => {
