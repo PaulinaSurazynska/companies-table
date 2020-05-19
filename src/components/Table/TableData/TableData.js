@@ -6,7 +6,7 @@ import style from './TableData.module.scss';
 const TableData = ({ id, name, city }) => {
   const [sum, setSum] = useState(null);
   const [avagare, setAvarage] = useState(null);
-  //   const [recent, setRecent] = useState(null);
+  const [recent, setRecent] = useState(null);
 
   const getTotalIncome = (arr) => {
     const total = arr.reduce((acc, obj) => {
@@ -23,13 +23,31 @@ const TableData = ({ id, name, city }) => {
     setAvarage(avarage.toFixed(2));
   };
 
-  //   const getLastMonthIncome = (arr) => {
-  //     arr.map((item) => {
-  //       //   console.log(item.date);
-  //       //   slit the date ande get the year and the month
-  //       //
-  //     });
-  //   };
+  const getLastMonthIncome = (arr) => {
+    // console.log(arr);
+    const incomesFromJanuary = arr.filter((item) => {
+      // split string to get the year and the month from the date
+      const el = item.date.split(/[- : .]/);
+      const year = el[0];
+      const month = el[1];
+
+      // current date, to compare with
+      const today = new Date();
+      const currentYear = String(today.getFullYear());
+
+      //   cos moths are calculated from 0
+      const january = 0 + String(today.getMonth() - 3);
+
+      return year === currentYear && month === january;
+    });
+
+    const sumJanIncome = incomesFromJanuary
+      .map((income) => income.value)
+      .reduce((a, b) => {
+        return (Number(a) + Number(b)).toFixed(2);
+      }, 0);
+    setRecent(sumJanIncome);
+  };
 
   useEffect(() => {
     const fetchCompanyIncome = () => {
@@ -39,7 +57,7 @@ const TableData = ({ id, name, city }) => {
         .then((data) => {
           getTotalIncome(data.incomes);
           getAvagareIncome(data.incomes);
-          //   getLastMonthIncome(data.incomes);
+          getLastMonthIncome(data.incomes);
         });
     };
 
@@ -53,6 +71,11 @@ const TableData = ({ id, name, city }) => {
       <td data-label="City">{city}</td>
       <td data-label="Total income">{sum}</td>
       <td data-label="Avarage income">{avagare}</td>
+      {recent ? (
+        <td data-label="January income">{recent}</td>
+      ) : (
+        <td data-label="January income">no income</td>
+      )}
     </tr>
   );
 };
