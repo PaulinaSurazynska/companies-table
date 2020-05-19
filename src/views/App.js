@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getCompanies } from 'utils/getData';
+import axios from 'axios';
 import Pagination from 'components/Pagination/Pagination';
 import Table from 'components/Table/Table';
 import SearchBar from 'components/SearchBar/SearachBar';
@@ -13,7 +13,15 @@ function App() {
   const [itemsPerPage] = useState(20);
 
   useEffect(() => {
-    getCompanies('https://recruitment.hal.skygate.io/companies', setCompanies, setError);
+    const getCompanies = async () => {
+      try {
+        const { data } = await axios.get('https://recruitment.hal.skygate.io/companies');
+        setCompanies(data);
+      } catch (err) {
+        setError(true);
+      }
+    };
+    getCompanies();
   }, []);
 
   //   pagination logic
