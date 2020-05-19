@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { companiesUrl } from 'utils/apiURL';
 import Pagination from 'components/Pagination/Pagination';
 import Table from 'components/Table/Table';
 import SearchBar from 'components/SearchBar/SearachBar';
@@ -15,7 +16,7 @@ function App() {
   useEffect(() => {
     const getCompanies = async () => {
       try {
-        const { data } = await axios.get('https://recruitment.hal.skygate.io/companies');
+        const { data } = await axios.get(companiesUrl);
         setCompanies(data);
       } catch (err) {
         setError(true);
@@ -24,7 +25,7 @@ function App() {
     getCompanies();
   }, []);
 
-  //   pagination logic
+  //  pagination logic
   const lastIndexPerPage = itemsPerPage * currentPage;
   const firstIndexPerPage = lastIndexPerPage - itemsPerPage;
   const currentItems = companies.slice(firstIndexPerPage, lastIndexPerPage);

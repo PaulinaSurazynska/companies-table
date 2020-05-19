@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getTotalIncome, getAvagareIncome, getLastMonthIncome } from 'utils/TableMethods';
+import { incomesUrl } from 'utils/apiURL';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import style from './TableData.module.scss';
@@ -14,7 +15,7 @@ const TableData = ({ id, name, city }) => {
     const fetchCompanyIncome = async () => {
       try {
         axios
-          .get(`https://recruitment.hal.skygate.io/incomes/${id}`)
+          .get(incomesUrl(id))
           .then((res) => res.data)
           .then((data) => {
             getTotalIncome(data.incomes, setSum);
@@ -33,7 +34,7 @@ const TableData = ({ id, name, city }) => {
     <>
       {error ? (
         <tr className={style.row}>
-          <td>error while loading data, try again later</td>
+          <td>We have some issue with loading the data, please try</td>
         </tr>
       ) : (
         <tr className={style.row} key={id}>
