@@ -29,7 +29,7 @@ const Table = ({ companies }) => {
               <th>City</th>
               <th>Total income</th>
               <th>Avarage income</th>
-              <th>Last January income</th>
+              <th>Last month income</th>
             </tr>
           </thead>
           <tbody>
