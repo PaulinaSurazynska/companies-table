@@ -19,7 +19,7 @@ const Table = ({ companies }) => {
   return (
     <>
       {!data.length ? (
-        <p>Loading list of the companies...</p>
+        <p>No results...</p>
       ) : (
         <table className={style.table}>
           <thead>
@@ -29,7 +29,7 @@ const Table = ({ companies }) => {
               <th>City</th>
               <th>Total income</th>
               <th>Avarage income</th>
-              <th>Last month income</th>
+              <th>Last January income</th>
             </tr>
           </thead>
           <tbody>

@@ -16,16 +16,16 @@ function App() {
     getCompanies('https://recruitment.hal.skygate.io/companies', setCompanies, setError);
   }, []);
 
-  // pagination logic
-  //   const lastIndexPerPage = itemsPerPage * currentPage;
-  //   const firstIndexPerPage = lastIndexPerPage - itemsPerPage;
-  //   const currentItems = companies.slice(firstIndexPerPage, lastIndexPerPage);
+  //   pagination logic
+  const lastIndexPerPage = itemsPerPage * currentPage;
+  const firstIndexPerPage = lastIndexPerPage - itemsPerPage;
+  const currentItems = companies.slice(firstIndexPerPage, lastIndexPerPage);
 
   const changePage = (pageNumber) => setCurrentPage(pageNumber);
 
   const searchCompany = (e) => setSearch(e.target.value);
 
-  const filteredCompanies = companies.filter((company) => {
+  const filteredCompanies = currentItems.filter((company) => {
     return Object.values(company)
       .map((value) => {
         return String(value);

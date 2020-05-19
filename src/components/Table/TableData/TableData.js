@@ -35,7 +35,7 @@ const TableData = ({ id, name, city }) => {
       const today = new Date();
       const currentYear = String(today.getFullYear());
 
-      //   cos moths are calculated from 0
+      // cos months are calculated from 0
       const january = 0 + String(today.getMonth() - 3);
 
       return year === currentYear && month === january;
