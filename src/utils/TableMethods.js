@@ -16,7 +16,6 @@ export const getAvagareIncome = (arr, dataSetter) => {
 };
 
 export const getLastMonthIncome = (arr, dataSetter) => {
-  // console.log(arr);
   const incomesFromJanuary = arr.filter((item) => {
     // split string to get the year and the month from the date
     const el = item.date.split(/[- : .]/);

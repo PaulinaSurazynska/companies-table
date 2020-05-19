@@ -34,7 +34,7 @@ const TableData = ({ id, name, city }) => {
     <>
       {error ? (
         <tr className={style.row}>
-          <td>We have some issue with loading the data, please try</td>
+          <td>We have some issues with loading the data, please try again later</td>
         </tr>
       ) : (
         <tr className={style.row} key={id}>
