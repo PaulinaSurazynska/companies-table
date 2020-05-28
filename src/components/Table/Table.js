@@ -33,9 +33,6 @@ const Table = ({ companies }) => {
               <th onClick={() => sortBy('id')}>Id</th>
               <th onClick={() => sortBy('name')}>Name</th>
               <th onClick={() => sortBy('city')}>City</th>
-              <th onClick={() => alert('yeah.. I need to be done! :/')}>Total income</th>
-              <th onClick={() => alert('yeah.. I need to be done! :/')}>Avarage income</th>
-              <th onClick={() => alert('yeah.. I need to be done! :/')}>Last January income</th>
             </tr>
           </thead>
           <tbody>
