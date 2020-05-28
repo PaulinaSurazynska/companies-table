@@ -33,7 +33,7 @@ function App() {
   });
 
   return (
-    <div className={style.page}>
+    <main className={style.page}>
       <div className={style.content}>
         <h1 className={style.title}>Companies table</h1>
         <SearchBar searchCompany={searchCompany} />
@@ -45,7 +45,7 @@ function App() {
           currentPage={currentPage}
         />
       </div>
-    </div>
+    </main>
   );
 }
 

@@ -11,32 +11,35 @@ const Pagination = ({ itemsPerPage, totalItems, changePage, currentPage }) => {
   }
 
   return (
-    <div className={style.pagination}>
-      <div
+    <nav className={style.pagination}>
+      <button
+        type="button"
         className={currentPage === 1 ? `${style.item} ${style.disabled}` : style.item}
         onClick={() => changePage(currentPage - 1)}
       >
         prev
-      </div>
+      </button>
       {pageNumbers.map((number) => (
-        <div
+        <button
+          type="button"
           key={number}
           className={currentPage === number ? `${style.item} ${style.active}` : style.item}
           onClick={() => changePage(number)}
         >
           {number}
-        </div>
+        </button>
       ))}
 
-      <div
+      <button
+        type="button"
         className={
           currentPage === pageNumbers.length ? `${style.item} ${style.disabled}` : style.item
         }
         onClick={() => changePage(currentPage + 1)}
       >
         next
-      </div>
-    </div>
+      </button>
+    </nav>
   );
 };
 
