@@ -1,5 +1,5 @@
 .row:nth-child(even) {
-    background-color: #5e636d;
+    background-color: grey;
 }
 
 @media(max-width:870px) {
@@ -12,7 +12,7 @@
 
     .row {
         margin-bottom: 1rem;
-        border: 1px solid #F0A5C3;
+        border: 1px solid pink;
 
         td {
             text-align: right;

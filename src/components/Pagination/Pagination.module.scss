@@ -16,7 +16,7 @@
         outline: none;
 
         &.active {
-            background-color: #F0A5C3;
+            background-color: pink;
         }
 
         &.disabled {
@@ -26,7 +26,7 @@
 
         &.item:first-child,
         &.item:last-child {
-            background-color: #F0A5C3;
+            background-color: pink;
         }
 
         &.item:first-child {
